@@ -1,0 +1,114 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebooks Checkpoints
+.ipynb_checkpoints/
+
+# Colab Notebooks
+*.ipynb
+
+# Virtual environment
+env/
+venv/
+ENV/
+.venv/
+*.env
+
+# Environment variables
+.env
+.env.*
+
+# PyCharm / VSCode
+.idea/
+.vscode/
+
+# Hugging Face cache and transformers
+*.lock
+*.bin
+*.h5
+*.pt
+*.onnx
+*.ckpt
+*.tflite
+*.pb
+*.msgpack
+*.json
+tokenizer_config.json
+config.json
+special_tokens_map.json
+training_args.bin
+runs/
+output/
+checkpoints/
+logs/
+
+# Datasets & NER labels
+data/
+dataset/
+*.csv
+*.tsv
+*.xlsx
+*.jsonl
+
+
+# NER Label files (CoNLL format)
+*.conll
+*.conllu
+
+# Model outputs
+models/
+saved_models/
+outputs/
+*.pkl
+*.joblib
+*.model
+
+# Images and downloads
+images/
+downloads/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.zip
+
+# SHAP/LIME output artifacts
+explainer_cache/
+interpretability/
+lime_explanations/
+shap_outputs/
+
+# Telegram scraping artifacts
+telegram_data/
+channel_messages/
+*.db
+*.sqlite
+*.log
+
+# Google Colab or Kaggle
+*.ckpt
+*.npz
+*.npy
+
+# Final report / Latex artifacts
+*.aux
+*.out
+*.log
+*.toc
+*.pdf
+report.pdf
+
+# Mac OS
+.DS_Store
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# System-specific
+Thumbs.db
+ehthumbs.db
+desktop.ini
