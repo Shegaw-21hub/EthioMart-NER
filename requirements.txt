@@ -1,0 +1,17 @@
+pandas
+numpy
+transformers
+datasets
+seqeval
+shap
+lime
+telethon
+scikit-learn
+matplotlib
+
+
+pyrogram>=2.0.0
+datasets>=2.12.0
+torch>=2.0.0
+nltk>=3.8.0
+lime>=0.2.0
