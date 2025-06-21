@@ -64,6 +64,14 @@ python scripts/telegram_scraper.py
    ```poweshell
    python scripts/data_preprocessor.py data/raw/telegram_messages_*.json
    ```
+### Task 1: Data Collection and Preprocessing
+
+- Developed a robust Telegram scraper to collect Amharic e-commerce messages from multiple channels.
+- Implemented data preprocessing scripts to clean, tokenize, and structure raw Telegram JSON data into CSV format ready for model training.
+- Handled media metadata such as photos and documents to ensure smooth downstream processing.
+- Added `.session` files to `.gitignore` to keep session files out of version control for security and cleanliness.
+
+---
 
 ### Model Training 
 Execute notebooks in order:
