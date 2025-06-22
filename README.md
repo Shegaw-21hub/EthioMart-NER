@@ -81,6 +81,37 @@ notebooks/1_data_collection.ipynb
 notebooks/2_data_preprocessing.ipynb
 
 notebooks/4_model_training.ipynb
+
+## 🏷️ Task 2: Manual Entity Annotation in CoNLL Format
+
+In Task 2, we manually labeled 50 Amharic Telegram messages to create training data for a Named Entity Recognition (NER) model. The objective was to identify key entities such as **products**, **prices**, and **locations** using the CoNLL format, which is widely adopted in NER tasks.
+
+### 🔖 Entity Labels (BIO Format)
+- `B-PRODUCT`, `I-PRODUCT`: Beginning and inside of product names
+- `B-PRICE`, `I-PRICE`: Beginning and inside of price mentions
+- `B-LOC`, `I-LOC`: Beginning and inside of location names
+- `O`: Tokens that do not belong to any entity
+
+### 🧾 Example Format
+
+ለልጆች B-PRODUCT
+ጫማ I-PRODUCT
+በ O
+350 B-PRICE
+ብር I-PRICE
+
+በአዲስ B-LOC
+አበባ I-LOC
+
+
+Each message is tokenized, annotated line by line, and separated by a blank line for clarity.
+
+### 📁 Output File
+Labeled data is stored in:  
+`data/labeled/amharic_ner.conll`
+
+This dataset is essential for fine-tuning transformer models for Amharic NER tasks.
+
 ### Vendor Analytics
   ```poweshell
  python scripts/vendor_analyzer.py
