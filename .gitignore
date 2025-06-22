@@ -6,8 +6,7 @@ __pycache__/
 # Jupyter Notebooks Checkpoints
 .ipynb_checkpoints/
 
-# Colab Notebooks
-*.ipynb
+
 
 # Virtual environment
 env/
