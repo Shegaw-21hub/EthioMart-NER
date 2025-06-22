@@ -64,36 +64,60 @@ python scripts/telegram_scraper.py
    ```poweshell
    python scripts/data_preprocessor.py data/raw/telegram_messages_*.json
    ```
-### Task 1: Data Collection and Preprocessing
+---
 
-- Developed a robust Telegram scraper to collect Amharic e-commerce messages from multiple channels.
-- Implemented data preprocessing scripts to clean, tokenize, and structure raw Telegram JSON data into CSV format ready for model training.
-- Handled media metadata such as photos and documents to ensure smooth downstream processing.
-- Added `.session` files to `.gitignore` to keep session files out of version control for security and cleanliness.
+### ✅ Task 1: Data Collection and Preprocessing
+
+This task focuses on extracting Amharic e-commerce data from Telegram channels and preparing it for Named Entity Recognition (NER) modeling.
+
+#### 🔹 Telegram Scraper
+- Implemented using the `Telethon` library.
+- Connects to the Telegram API using credentials stored securely in a `.env` file.
+- Joins and fetches messages from public e-commerce Telegram channels.
+- Stores messages in structured `.json` and `.csv` formats inside the `data/raw/` directory.
+
+#### 🔹 Session Management
+- Session files (`.session`) are securely stored and excluded from version control via `.gitignore`.
+- Ensures the bot doesn't require re-authentication every run.
+
+#### 🔹 Data Cleaning & Preprocessing
+- Raw messages often contain emojis, links, timestamps, and multimedia indicators.
+- Cleaning pipeline includes:
+  - Removing emojis and non-text characters
+  - Standardizing Amharic punctuation
+  - Tokenizing and lowercasing
+- Cleaned outputs are saved to `data/processed/telegram_messages_cleaned.csv`.
+
+#### 🔹 Scripts
+- `scripts/telegram_scraper.py`: Connects to Telegram and extracts raw message data.
+- `scripts/data_preprocessor.py`: Cleans and structures raw messages into a training-ready format.
 
 ---
 
-### Model Training 
-Execute notebooks in order:
+### ✅ Task 2: Manual Entity Labeling in CoNLL Format
 
-notebooks/1_data_collection.ipynb
+This task involves labeling a subset of the Amharic dataset manually for NER training using the CoNLL format.
 
-notebooks/2_data_preprocessing.ipynb
+#### 🔹 Objective
+- Identify and tag important entities in Amharic Telegram messages:
+  - `PRODUCT`, `PRICE`, and `LOCATION`.
 
-notebooks/4_model_training.ipynb
+#### 🔹 Format: CoNLL (Column-Based)
+- Each line contains a word and its corresponding tag.
+- Messages are separated by blank lines.
 
-## 🏷️ Task 2: Manual Entity Annotation in CoNLL Format
+#### 🔹 BIO Tagging Schema Used
+| Tag         | Description                                   |
+|-------------|-----------------------------------------------|
+| B-PRODUCT   | Beginning of a product name                   |
+| I-PRODUCT   | Inside a product name                         |
+| B-LOC       | Beginning of a location name                  |
+| I-LOC       | Inside a location name                        |
+| B-PRICE     | Beginning of a price mention                  |
+| I-PRICE     | Inside a price mention                        |
+| O           | Outside any entity                            |
 
-In Task 2, we manually labeled 50 Amharic Telegram messages to create training data for a Named Entity Recognition (NER) model. The objective was to identify key entities such as **products**, **prices**, and **locations** using the CoNLL format, which is widely adopted in NER tasks.
-
-### 🔖 Entity Labels (BIO Format)
-- `B-PRODUCT`, `I-PRODUCT`: Beginning and inside of product names
-- `B-PRICE`, `I-PRICE`: Beginning and inside of price mentions
-- `B-LOC`, `I-LOC`: Beginning and inside of location names
-- `O`: Tokens that do not belong to any entity
-
-### 🧾 Example Format
-
+#### 🔹 Example (Sample CoNLL Output)
 ለልጆች B-PRODUCT
 ጫማ I-PRODUCT
 በ O
@@ -104,27 +128,17 @@ In Task 2, we manually labeled 50 Amharic Telegram messages to create training d
 አበባ I-LOC
 
 
-Each message is tokenized, annotated line by line, and separated by a blank line for clarity.
+#### 🔹 Workflow
+- 50 messages sampled from `telegram_messages_cleaned.csv`.
+- Tokens labeled manually by reviewing each sentence.
+- Saved as `data/labeled/amharic_ner.conll`.
 
-### 📁 Output File
-Labeled data is stored in:  
-`data/labeled/amharic_ner.conll`
+#### 🔹 Scripts & Notebook
+- `notebooks/3_data_labeling.ipynb`: Includes sample selection, token display, and export function for CoNLL.
+- `save_conll()` function used to store labeled data in the correct format.
 
-This dataset is essential for fine-tuning transformer models for Amharic NER tasks.
+---
 
-### Vendor Analytics
-  ```poweshell
- python scripts/vendor_analyzer.py
-  ```
-## Results
-
-### Performance Metrics on Validation Set
-
-| Model        | Precision | Recall | F1-Score | Speed (ms/sample) |
-|--------------|-----------|--------|----------|--------------------|
-| XLM-Roberta  | 0.89      | 0.87   | 0.88     | 120                |
-| mBERT        | 0.86      | 0.85   | 0.85     | 150                |
-| DistilBERT   | 0.84      | 0.82   | 0.83     | 80                 |
 
 
 ## Acknowledgments
