@@ -6,8 +6,7 @@ __pycache__/
 # Jupyter Notebooks Checkpoints
 .ipynb_checkpoints/
 
-# Colab Notebooks
-*.ipynb
+
 
 # Virtual environment
 env/
@@ -113,3 +112,4 @@ Thumbs.db
 ehthumbs.db
 desktop.ini
 *.session
+
