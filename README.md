@@ -75,21 +75,29 @@ python scripts/data_preprocessor.py data/raw/telegram_messages_*.json
 ### 🔹 Session File Management
 - `.session` files are excluded via `.gitignore` to avoid sharing sensitive authentication state.
 
-### 🔹 Data Cleaning
-- Removes noise such as:
-  - Emojis
-  - Symbols
-  - Links
-  - Timestamps
-  - Ads
-- Tokenizes Amharic text and standardizes punctuation.
-- Outputs saved to:  
-  `data/processed/telegram_messages_cleaned.csv`
+## 🔹 Data Cleaning
 
-### 🔹 Scripts
-- `telegram_scraper.py`: Connects to channels and collects raw messages.
-- `data_preprocessor.py`: Cleans raw text for downstream NER labeling.
-## ✅ Task 2: Manual Entity Labeling in CoNLL Format
+- Cleans raw Telegram messages by removing:
+  - Emojis
+  - Decorative symbols
+  - URLs and links
+  - Repetitive punctuation (e.g., `.....`)
+  - Non-textual clutter
+- Standardizes whitespace and filters meaningful content.
+- Tokenizes mixed Amharic-English text using `nltk.word_tokenize`.
+- **Output saved to:**  
+  `data/processed/telegram_messages_20250621_052911_cleaned.csv`
+
+---
+
+## 🔹 Scripts
+
+- `telegram_scraper.py`:  
+  Scrapes Telegram channels and exports messages in `.json` or `.csv`.
+
+- `data_preprocess.py`:  
+  Cleans and tokenizes raw messages for downstream NLP tasks like NER.  
+  Can be used both **programmatically** or via the **command line**.
 
 ### 🎯 Objective
 Label a subset of Amharic messages (30–50) for NER training using the CoNLL format and BIO tagging scheme.
