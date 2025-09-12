@@ -158,9 +158,6 @@ Key Findings:
 ```
 ## 📬 Contact
 
-**Shegaw Adugna**  
-📧 Email: [shegamihret@gmail.com](mailto:your.email@example.com)  
-🔗 GitHub: [github.com/Shegaw-21hub](https://github.com/Shegaw-21hub)  
-💼 LinkedIn: [linkedin.com/in/shegaw-adugna-b751a1166/](https://linkedin.com/in/yourprofile)  
+**Shegaw Adugna**   
 
 *© 2023 EthioMart NER Project - MIT License*
